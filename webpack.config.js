@@ -50,6 +50,9 @@ module.exports = {
         })
     ],
     //页面实时更新先安装webpack-dev-server， 然后new webpack.HotModuleReplacementPlugin();
+    //contentBase:'./public'//默认是这个文件，有了HtmlWebpackPlugin之后
+    //就自动有了，但不表现出来，则热加载默认的文件就是HtmlWebpackPlugin
+    //下的template文件
     devServer: {
         proxy:{
              //凡是'/api'开头的http请求，都会被代理到localhost:3000
@@ -59,7 +62,7 @@ module.exports = {
             }
         },
         colors: true, //终端中输出结果为彩色
-        historyApiFallback: true, //不跳转，在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
+        historyApiFallback: true, //不跳转，在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所以引用的文件就可以饮用文件名，就自动加载下面的index.html,所有的跳转将指向index.html
         inline: true, //实时刷新
         hot: true  // 使用热加载插件 HotModuleReplacementPlugin
     }
